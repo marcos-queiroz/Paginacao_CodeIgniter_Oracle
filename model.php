@@ -6,8 +6,8 @@ class Dados_model extends CI_Model {
         parent::__construct();
     }
     
-    public function dados($dt_inicial,$dt_final,$limite=0,$inicio=0) {
-        
+    public function getDados($dt_inicial = null, $dt_final = null, $limite = 0, $inicio = 0) 
+    {    
         if($limite > 0){
 
             $query = $this->db->query("
@@ -30,8 +30,8 @@ class Dados_model extends CI_Model {
         return $query->result_array();
     }
     
-    function quantidade($dt_inicial,$dt_final){
-
+    function quantidade($dt_inicial = null, $dt_final = null)
+    {
         $query = $this->db->query("
             SELECT TRANSACAO.CD_TRANSACAO
                     FROM TRANSACAO INNER JOIN PESSOA ON PESSOA.CPF = TRANSACAO.CPF
