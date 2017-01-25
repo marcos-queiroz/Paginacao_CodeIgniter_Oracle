@@ -2,14 +2,16 @@
 
 class Home extends CI_Controller {
     
-    function __construct() {
+    function __construct() 
+    {
         parent::__construct();
         $this->load->library('pagination');
         $this->load->model('model', 'dados');
 
     }
     
-    public function dados(){
+    public function dados()
+    {
         $dt_inicial = $this->input->post('dt_inicial'); 
         $dt_fim = $this->input->post('dt_fim');
                
@@ -20,7 +22,7 @@ class Home extends CI_Controller {
         $limite = $inicio + 20;
         $this->pagination->initialize($config);
 
-        $data['dados'] = $this->dados->dados($dt_inicial, $dt_fim, $limite, $inicio);
+        $data['dados'] = $this->dados->getDados($dt_inicial, $dt_fim, $limite, $inicio);
         $data['paginacao'] = $this->pagination->create_links();
 
 
